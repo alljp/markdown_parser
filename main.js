@@ -2,7 +2,8 @@ rules = [
   {regex: /(\#)(.*)/g, replacement: '<h1>$2</h1>'},
   {regex: /(\*\*|__)(.*?)\1/g, replacement: '<strong>$2</strong>'},
   {regex: /(\*|_)(.*?)\1/g, replacement: '<em>$2</em>'},
-  {regex: /\"(.*?)\"/g, replacement: '<q>$1</q>'}
+  {regex: /\"(.*?)\"/g, replacement: '<q>$1</q>'},
+  {regex: /\[(.*?)\]\((.*?)\)/g, replacement: '<a href=\'$2\'>$1</a>'}
 ]
 
 function render (md_string) {
@@ -13,6 +14,6 @@ function render (md_string) {
 }
 
 md_string = '#Header1\nText attributes _italic_, **italic**, __bold__, **bold**, ***bold-italic*** \n' +
-  '"Quote"'
+  '"Quote" \n A [link](http://example.com)'
 
 console.log(render(md_string))
