@@ -1,5 +1,5 @@
 rules = [
-{}
+  {regex: /(\#)(.*)/g, replacement: '<h1>$2</h1>'}
 ]
 
 function render (md_string) {
@@ -8,3 +8,7 @@ function render (md_string) {
   }
   return md_string
 }
+
+md_string = '#Headers'
+
+console.log(render(md_string))
