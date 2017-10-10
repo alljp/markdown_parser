@@ -3,7 +3,8 @@ rules = [
   {regex: /(\*\*|__)(.*?)\1/g, replacement: '<strong>$2</strong>'},
   {regex: /(\*|_)(.*?)\1/g, replacement: '<em>$2</em>'},
   {regex: /\"(.*?)\"/g, replacement: '<q>$1</q>'},
-  {regex: /\[(.*?)\]\((.*?)\)/g, replacement: '<a href=\'$2\'>$1</a>'}
+  {regex: /\[(.*?)\]\((.*?)\)/g, replacement: '<a href=\'$2\'>$1</a>'},
+  {regex: /\!\[(.*?)\]\((.*?)\)/g, replacement: '<img src=\'$2\' alt=\'$1\'>'}
 ]
 
 function render (md_string) {
