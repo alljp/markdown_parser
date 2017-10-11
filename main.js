@@ -8,8 +8,8 @@ rules = [
   {regex: /\n\>(.*)/g, replacement: blockquote}
 ]
 
-function blockquote (md_string, item) {
-  return `\n<blockquote>${item}</blockquote>`
+function blockquote (match, item1) {
+  return `\n<blockquote>${item1}</blockquote>`
 }
 
 function render (md_string) {
