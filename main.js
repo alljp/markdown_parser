@@ -6,12 +6,21 @@ rules = [
   {regex: /\n-{5,}/g, replacement: '\n<hr />'},
   {regex: /\[(.*?)\]\((.*?)\)/g, replacement: '<a href=\'$2\'>$1</a>'},
   {regex: /\!\[(.*?)\]\((.*?)\)/g, replacement: '<img src=\'$2\' alt=\'$1\'>'},
-  {regex: /\n\>(.*)/g, replacement: blockquote}
+  {regex: /\n\>(.*)/g, replacement: blockquote},
+  {regex: /\n([^\n]+)\n/g, replacement: para}
 ]
 
 function header (match, item1, item2) {
   let headerLevel = item1.length
   return '<h' + headerLevel + '>' + item2 + '</h' + headerLevel + '>'
+}
+
+function para (match, item1) {
+  item = item1.trim()
+  if (/^<\/?(ul|ol|li|h|p|bl)/im.test(item)) {
+  	return '\n' + item1 + '\n'
+  }
+  return '\n<p>' + item + '</p>\n'
 }
 
 function blockquote (match, item1) {
