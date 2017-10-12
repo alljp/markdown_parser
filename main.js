@@ -9,6 +9,7 @@ let rules = [
   {regex: /\n[0-9]+\. (.*)/g, replacement: olList},
   {regex: /!\[(.*?)\]\((.*?)\)/g, replacement: '<img src=\'$2\' alt=\'$1\'>'},
   {regex: /\n>(.*)/g, replacement: blockquote},
+  {regex: /`(.*?)`/g, replacement: '<code>$1</code>'},
   {regex: /\n([^\n]+)\n/g, replacement: para}
 ]
 
