@@ -34,7 +34,7 @@ function para (match, item1) {
 }
 
 function blockquote (match, item1) {
-  return `\n<blockquote>${item1}</blockquote>`
+  return '\n<blockquote>' + item1.trim() + '</blockquote>'
 }
 
 function render (mdString) {
