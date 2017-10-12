@@ -13,7 +13,7 @@ let rules = [
 ]
 
 function header (match, item1, item2) {
-  let headerLevel = item1.length
+  let headerLevel = item1.length - 1
   return '<h' + headerLevel + '>' + item2 + '</h' + headerLevel + '>'
 }
 
@@ -38,10 +38,11 @@ function blockquote (match, item1) {
 }
 
 function render (mdString) {
+  mdString = '\n' + mdString + '\n'
   for (let i = 0; i < rules.length; i++) {
     mdString = mdString.replace(rules[i].regex, rules[i].replacement)
   }
-  return mdString
+  return mdString.trim()
 }
 
 // md_string = '#Header1\nText attributes _italic_, **italic**, __bold__, **bold**, ***bold-italic*** \n' +
