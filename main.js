@@ -17,7 +17,9 @@ let rules = [
   {regex: /\n>(.*)/g, replacement: blockquote},
   {regex: /<\/blockquote><blockquote>/g, replacement: '\n'},
   {regex: /`(.*?)`/g, replacement: '<code>$1</code>'},
-  {regex: /\n([^\n]+)\n/g, replacement: para}
+  {regex: /\n {4}(.*)/g, replacement: precode},
+  {regex: /<\/code><\/pre>\n<pre><code>/g, replacement: '\n'},
+  {regex: /\n([^\n, ]+)\n/g, replacement: para}
 ]
 
 function header (match, item1, item2) {
@@ -43,6 +45,11 @@ function para (match, item1) {
 
 function blockquote (match, item1) {
   return '\n<blockquote>' + item1.trim() + '</blockquote>'
+}
+
+function precode (match, item1) {
+  console.log(item1)
+  return '\n<pre><code>' + item1 + '</code></pre>'
 }
 
 function render (mdString) {
