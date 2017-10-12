@@ -15,6 +15,7 @@ let rules = [
   {regex: /<\/ol>\s?<ol>/g, replacement: ''},
   {regex: /!\[(.*?)\]\((.*?)\)/g, replacement: '<img src=\'$2\' alt=\'$1\'>'},
   {regex: /\n>(.*)/g, replacement: blockquote},
+  {regex: /<\/blockquote><blockquote>/g, replacement: '\n'},
   {regex: /`(.*?)`/g, replacement: '<code>$1</code>'},
   {regex: /\n([^\n]+)\n/g, replacement: para}
 ]
