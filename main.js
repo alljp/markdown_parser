@@ -1,3 +1,7 @@
+const fs = require('fs')
+
+let mdString = fs.readFileSync('sample.md', 'utf8')
+
 let rules = [
   {regex: /(\n#{1,6})(.*)/g, replacement: header},
   {regex: /(\*\*|__)(.*?)\1/g, replacement: '<strong>$2</strong>'},
@@ -47,10 +51,5 @@ function render (mdString) {
   }
   return mdString.trim()
 }
-
-// md_string = '#Header1\nText attributes _italic_, **italic**, __bold__, **bold**, ***bold-italic*** \n' +
-//   '"Quote" \n A [link](http://example.com)'
-
-let mdString = '# Title\n\nAnd *now* [a link](http://www.google.com) to **follow** and [another](http://yahoo.com/).\n\n* One\n* Two\n* Three\n\n## Subhead\n\nOne **two** three **four** five.\n\nOne __two__ three _four_ five __six__ seven _eight_.\n\n1. One\n2. Two\n3. Three\n\nMore text with `inline($code)` sample.\n\n> A block quote\n> across two lines.\n"More text..."'
 
 console.log(render(mdString))
