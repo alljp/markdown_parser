@@ -7,6 +7,8 @@ let rules = [
   {regex: /\[(.*?)\]\((.*?)\)/g, replacement: '<a href=\'$2\'>$1</a>'},
   {regex: /\n\* (.*)/g, replacement: ulList},
   {regex: /\n[0-9]+\. (.*)/g, replacement: olList},
+  {regex: /<\/ul>\s?<ul>/g, replacement: ''},
+  {regex: /<\/ol>\s?<ol>/g, replacement: ''},
   {regex: /!\[(.*?)\]\((.*?)\)/g, replacement: '<img src=\'$2\' alt=\'$1\'>'},
   {regex: /\n>(.*)/g, replacement: blockquote},
   {regex: /`(.*?)`/g, replacement: '<code>$1</code>'},
