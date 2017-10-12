@@ -5,6 +5,8 @@ let rules = [
   {regex: /"(.*?)"/g, replacement: '<q>$1</q>'},
   {regex: /\n-{5,}/g, replacement: '\n<hr />'},
   {regex: /\[(.*?)\]\((.*?)\)/g, replacement: '<a href=\'$2\'>$1</a>'},
+  {regex: /\n\* (.*)/g, replacement: ulList},
+  {regex: /\n[0-9]+\. (.*)/g, replacement: olList},
   {regex: /!\[(.*?)\]\((.*?)\)/g, replacement: '<img src=\'$2\' alt=\'$1\'>'},
   {regex: /\n>(.*)/g, replacement: blockquote},
   {regex: /\n([^\n]+)\n/g, replacement: para}
@@ -13,6 +15,14 @@ let rules = [
 function header (match, item1, item2) {
   let headerLevel = item1.length
   return '<h' + headerLevel + '>' + item2 + '</h' + headerLevel + '>'
+}
+
+function ulList (match, item1) {
+  return '\n<ul>\n\t<li>' + item1.trim() + '</li>\n</ul>'
+}
+
+function olList (match, item1) {
+  return '\n<ol>\n\t<li>' + item1.trim() + '</li>\n</ol>'
 }
 
 function para (match, item1) {
@@ -37,6 +47,6 @@ function render (mdString) {
 // md_string = '#Header1\nText attributes _italic_, **italic**, __bold__, **bold**, ***bold-italic*** \n' +
 //   '"Quote" \n A [link](http://example.com)'
 
-let mdString = ' # Title\n\nAnd *now* [a link](http://www.google.com) to **follow** and [another](http://yahoo.com/).\n\n* One\n* Two\n* Three\n\n## Subhead\n\nOne **two** three **four** five.\n\nOne __two__ three _four_ five __six__ seven _eight_.\n\n1. One\n2. Two\n3. Three\n\nMore text with `inline($code)` sample.\n\n> A block quote\n> across two lines.\n"More text..."'
+let mdString = '# Title\n\nAnd *now* [a link](http://www.google.com) to **follow** and [another](http://yahoo.com/).\n\n* One\n* Two\n* Three\n\n## Subhead\n\nOne **two** three **four** five.\n\nOne __two__ three _four_ five __six__ seven _eight_.\n\n1. One\n2. Two\n3. Three\n\nMore text with `inline($code)` sample.\n\n> A block quote\n> across two lines.\n"More text..."'
 
 console.log(render(mdString))
