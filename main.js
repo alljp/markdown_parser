@@ -8,12 +8,12 @@ let rules = [
   {regex: /(\*|_)(.*?)\1/g, replacement: '<em>$2</em>'},
   {regex: /"(.*?)"/g, replacement: '<q>$1</q>'},
   {regex: /\n-{5,}/g, replacement: '\n<hr />'},
+  {regex: /!\[(.*?)\]\((.*?)\)/g, replacement: '<img src=\'$2\' alt=\'$1\'>'},
   {regex: /\[(.*?)\]\((.*?)\)/g, replacement: '<a href=\'$2\'>$1</a>'},
   {regex: /\n\s*\* (.*)/g, replacement: ulList},
   {regex: /\n\s*[0-9]+\. (.*)/g, replacement: olList},
   {regex: /<\/ul>\s?<ul>/g, replacement: ''},
   {regex: /<\/ol>\s?<ol>/g, replacement: ''},
-  {regex: /!\[(.*?)\]\((.*?)\)/g, replacement: '<img src=\'$2\' alt=\'$1\'>'},
   {regex: /\n>(.*)/g, replacement: blockquote},
   {regex: /<\/blockquote><blockquote>/g, replacement: '\n'},
   {regex: /`(.*?)`/g, replacement: '<code>$1</code>'},
@@ -48,7 +48,6 @@ function blockquote (match, item1) {
 }
 
 function precode (match, item1) {
-  console.log(item1)
   return '\n<pre><code>' + item1 + '</code></pre>'
 }
 
