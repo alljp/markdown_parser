@@ -60,4 +60,4 @@ function render (mdString) {
   return mdString.trim()
 }
 
-console.log(render(mdString))
+fs.writeFile('out.html', render(mdString), 'utf8')
