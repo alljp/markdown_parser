@@ -6,6 +6,7 @@ let rules = [
   {regex: /(\n#{1,6})(.*)/g, replacement: header},
   {regex: /(\*\*|__)(.*?)\1/g, replacement: '<strong>$2</strong>'},
   {regex: /(\*|_)(.*?)\1/g, replacement: '<em>$2</em>'},
+  {regex: /(~~)(.*?)\1/g, replacement: '<strike>$2</strike>'},
   {regex: /"(.*?)"/g, replacement: '<q>$1</q>'},
   {regex: /\n-{5,}/g, replacement: '\n<hr />'},
   {regex: /!\[(.*?)\]\((.*?)\)/g, replacement: '<img src=\'$2\' alt=\'$1\'>'},
