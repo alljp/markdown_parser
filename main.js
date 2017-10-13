@@ -20,7 +20,7 @@ let rules = [
   {regex: /`(.*?)`/g, replacement: '<code>$1</code>'},
   {regex: /\n {4}(.*)/g, replacement: precode},
   {regex: /<\/code><\/pre>\n<pre><code>/g, replacement: '\n'},
-  {regex: /\n([^\n, ]+)\n/g, replacement: para}
+  {regex: /\n([^\n]+)\n/g, replacement: para}
 ]
 
 function header (match, item1, item2) {
